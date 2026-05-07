@@ -4,25 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sastrería de Autor | Alta Costura en Telares Andinos</title>
+    
     <!-- Fuentes elegantes de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     
+    <!-- Librería FontAwesome para Íconos de Redes Sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Variables de Color (Inspiradas en lana de llama, vicuña y elegancia sartorial) */
+        /* Variables de Color */
         :root {
             --color-fondo: #f9f8f6;
             --color-texto: #2c2c2c;
             --color-acento: #8b5a2b; /* Tono tierra/vicuña */
             --color-oscuro: #1a1a1a;
+            --color-oro: #c5a059; /* Toque premium */
         }
 
-        /* Reseteo básico */
+        /* Reseteo básico y Scroll Suave */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -37,16 +46,19 @@
             font-weight: 400;
         }
 
-        /* --- NAVEGACIÓN --- */
+        /* --- NAVEGACIÓN STICKY --- */
         header {
             padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: transparent;
-            position: absolute;
+            background-color: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(5px);
+            position: fixed; /* Mantiene el header visible al hacer scroll */
+            top: 0;
             width: 100%;
-            z-index: 10;
+            z-index: 1000;
+            transition: background-color 0.3s;
         }
 
         .logo {
@@ -56,53 +68,57 @@
             text-transform: uppercase;
         }
 
-        /* --- HERO SECTION (Inicio visual impactante) --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('URL_DE_FOTO_DE_FONDO_AQUI') center/cover;
+            /* Se añade un poco de padding top para compensar el header fixed */
+            padding-top: 80px; 
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('URL_DE_FOTO_DE_FONDO_AQUI') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: #fff;
-            padding: 0 20px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .hero h1 {
             font-size: 4rem;
             margin-bottom: 15px;
             letter-spacing: 1px;
+            color: var(--color-fondo);
         }
 
         .hero p {
             font-size: 1.2rem;
             max-width: 600px;
             font-weight: 300;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .btn-cta {
-            padding: 12px 30px;
-            border: 1px solid #fff;
+            padding: 14px 35px;
+            border: 1px solid var(--color-oro);
             background: transparent;
-            color: #fff;
+            color: var(--color-oro);
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .btn-cta:hover {
-            background: #fff;
-            color: var(--color-oscuro);
+            background: var(--color-oro);
+            color: #fff;
         }
 
         /* --- SECCIÓN: EL ORIGEN & LOS MATERIALES --- */
         .about {
             display: flex;
-            padding: 80px 10%;
-            gap: 50px;
+            padding: 100px 10%;
+            gap: 60px;
             align-items: center;
         }
 
@@ -111,15 +127,15 @@
         }
 
         .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2.8rem;
+            margin-bottom: 25px;
             color: var(--color-oscuro);
         }
 
         .about-text p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            color: #555;
+            margin-bottom: 20px;
+            font-size: 1.15rem;
+            color: #444;
         }
 
         .about-image {
@@ -129,43 +145,45 @@
         .about-image img {
             width: 100%;
             height: auto;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 2px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
         /* --- SECCIÓN: COLECCIÓN / VIDRIERA --- */
         .collection {
-            padding: 80px 10%;
+            padding: 80px 10% 100px;
             background-color: #fff;
             text-align: center;
         }
 
         .collection h2 {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            color: var(--color-oscuro);
         }
 
         .grid-galeria {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
 
         .item-galeria {
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            border-radius: 2px;
         }
 
         .item-galeria img {
             width: 100%;
-            height: 400px;
+            height: 450px;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .item-galeria:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .overlay {
@@ -173,11 +191,11 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px 20px;
             transform: translateY(100%);
-            transition: transform 0.3s ease;
-            text-align: left;
+            transition: transform 0.4s ease;
+            text-align: center;
         }
 
         .item-galeria:hover .overlay {
@@ -185,60 +203,126 @@
         }
 
         .overlay h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: var(--color-oscuro);
         }
 
-        /* --- FOOTER / CONTACTO --- */
+        .overlay p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* --- FOOTER / CONTACTO Y REDES --- */
         footer {
             background-color: var(--color-oscuro);
             color: #fff;
             text-align: center;
-            padding: 60px 20px;
+            padding: 70px 20px;
         }
 
         footer h2 {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-size: 2.2rem;
         }
 
-        .contacto-btn {
-            display: inline-block;
+        footer p {
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+        
+        .footer-location {
+            font-style: italic;
+            margin-bottom: 30px;
+            color: var(--color-oro);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
             margin-top: 20px;
-            padding: 15px 40px;
-            background-color: var(--color-acento);
+        }
+
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #fff;
+            border-radius: 50%;
             color: #fff;
             text-decoration: none;
-            letter-spacing: 1px;
-            transition: background 0.3s;
+            font-size: 1.5rem;
+            transition: all 0.3s;
         }
 
-        .contacto-btn:hover {
-            background-color: #704720;
+        .btn-social.ig:hover {
+            background-color: #E1306C;
+            border-color: #E1306C;
+        }
+
+        .btn-social.wa:hover {
+            background-color: #25D366;
+            border-color: #25D366;
+        }
+
+        /* --- BOTÓN WHATSAPP FLOTANTE --- */
+        .whatsapp-flotante {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-flotante:hover {
+            transform: scale(1.1);
         }
 
         /* Diseño Responsivo para Móviles */
         @media (max-width: 768px) {
             .about {
                 flex-direction: column;
+                padding: 60px 5%;
             }
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             header {
                 justify-content: center;
+            }
+            .whatsapp-flotante {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 30px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Encabezado -->
+    <!-- Encabezado Sticky -->
     <header>
-        <div class="logo">Ferrer Roca</div>
+        <div class="logo">Sastrería [Apellido]</div>
     </header>
 
     <!-- Sección Principal (Hero) -->
-    <!-- REEMPLAZAR URL_DE_FOTO_DE_FONDO_AQUI con el link de una foto de tu padre trabajando o una textura de tela -->
+    <!-- REEMPLAZAR URL_DE_FOTO_DE_FONDO_AQUI -->
     <section class="hero" id="inicio">
         <h1>Alta Costura Andina</h1>
         <p>Diseños exclusivos confeccionados a medida, honrando la tradición de los hilados artesanales en llama y vicuña.</p>
@@ -253,7 +337,6 @@
             <p>En el taller, esas texturas ancestrales se encuentran con la precisión de la sastrería de alta costura. El resultado son prendas con identidad, diseño de autor y una caída impecable, pensadas para durar toda la vida.</p>
         </div>
         <div class="about-image">
-            <!-- REEMPLAZAR RUTA_IMAGEN_AQUI con la foto de un telar o el taller -->
             <img src="https://images.unsplash.com/photo-1584226761916-3fd67ab5ac3a?q=80&w=800&auto=format&fit=crop" alt="Textura de lana y taller de sastrería">
         </div>
     </section>
@@ -293,9 +376,24 @@
     <footer>
         <h2>Confección a Medida</h2>
         <p>Atención personalizada y asesoramiento en diseño.</p>
-        <!-- REEMPLAZAR EL NUMERO DE WHATSAPP AQUI (Incluir código de país, ej: 549 para Argentina) -->
-        <a href="https://wa.me/5493875028991?text=Hola,%20me%20gustaría%20consultar%20por%20una%20prenda%20a%20medida." class="contacto-btn" target="_blank">Contactar por WhatsApp</a>
+        <p class="footer-location"><i class="fas fa-map-marker-alt"></i> Showroom y Taller en Salta Capital</p>
+        
+        <div class="social-links">
+            <!-- REEMPLAZAR ENLACE_A_INSTAGRAM -->
+            <a href="https://instagram.com/ENLACE_A_INSTAGRAM" class="btn-social ig" target="_blank" title="Síguenos en Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <!-- REEMPLAZAR NUMERO DE WHATSAPP -->
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola,%20me%20gustaría%20consultar%20por%20una%20prenda%20a%20medida." class="btn-social wa" target="_blank" title="Contáctanos por WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
     </footer>
+
+    <!-- Botón Flotante de WhatsApp (Visible en toda la navegación) -->
+    <a href="https://wa.me/549XXXXXXXXXX?text=Hola,%20me%20encantaría%20saber%20más%20sobre%20su%20sastrería." class="whatsapp-flotante" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
