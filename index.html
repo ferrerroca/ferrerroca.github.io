@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     
-    <!-- Librería FontAwesome para Íconos de Redes Sociales -->
+    <!-- Librería FontAwesome para Íconos de Redes Sociales y Correo -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -54,7 +54,7 @@
             align-items: center;
             background-color: rgba(26, 26, 26, 0.8);
             backdrop-filter: blur(5px);
-            position: fixed; /* Mantiene el header visible al hacer scroll */
+            position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
@@ -71,7 +71,6 @@
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            /* Se añade un poco de padding top para compensar el header fixed */
             padding-top: 80px; 
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('URL_DE_FOTO_DE_FONDO_AQUI') center/cover;
             display: flex;
@@ -258,6 +257,7 @@
             transition: all 0.3s;
         }
 
+        /* Colores hover para cada botón */
         .btn-social.ig:hover {
             background-color: #E1306C;
             border-color: #E1306C;
@@ -266,6 +266,11 @@
         .btn-social.wa:hover {
             background-color: #25D366;
             border-color: #25D366;
+        }
+        
+        .btn-social.em:hover {
+            background-color: var(--color-oro);
+            border-color: var(--color-oro);
         }
 
         /* --- BOTÓN WHATSAPP FLOTANTE --- */
@@ -379,13 +384,17 @@
         <p class="footer-location"><i class="fas fa-map-marker-alt"></i> Showroom y Taller en Salta Capital</p>
         
         <div class="social-links">
-            <!-- REEMPLAZAR ENLACE_A_INSTAGRAM -->
+            <!-- BOTÓN INSTAGRAM -->
             <a href="https://instagram.com/ENLACE_A_INSTAGRAM" class="btn-social ig" target="_blank" title="Síguenos en Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
-            <!-- REEMPLAZAR NUMERO DE WHATSAPP -->
+            <!-- BOTÓN WHATSAPP -->
             <a href="https://wa.me/549XXXXXXXXXX?text=Hola,%20me%20gustaría%20consultar%20por%20una%20prenda%20a%20medida." class="btn-social wa" target="_blank" title="Contáctanos por WhatsApp">
                 <i class="fab fa-whatsapp"></i>
+            </a>
+            <!-- BOTÓN CORREO ELECTRÓNICO (NUEVO) -->
+            <a href="mailto:tu-correo@ejemplo.com?subject=Consulta%20sobre%20diseños%20a%20medida" class="btn-social em" title="Envíanos un correo electrónico">
+                <i class="fas fa-envelope"></i>
             </a>
         </div>
     </footer>
