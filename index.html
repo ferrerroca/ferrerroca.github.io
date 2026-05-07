@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sastrería de Autor | Alta Costura en Telares Andinos</title>
+    <!-- Fuentes elegantes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables de Color (Inspiradas en lana de llama, vicuña y elegancia sartorial) */
+        :root {
+            --color-fondo: #f9f8f6;
+            --color-texto: #2c2c2c;
+            --color-acento: #8b5a2b; /* Tono tierra/vicuña */
+            --color-oscuro: #1a1a1a;
+        }
+
+        /* Reseteo básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: transparent;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- HERO SECTION (Inicio visual impactante) --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('URL_DE_FOTO_DE_FONDO_AQUI') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .btn-cta {
+            padding: 12px 30px;
+            border: 1px solid #fff;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            background: #fff;
+            color: var(--color-oscuro);
+        }
+
+        /* --- SECCIÓN: EL ORIGEN & LOS MATERIALES --- */
+        .about {
+            display: flex;
+            padding: 80px 10%;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--color-oscuro);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- SECCIÓN: COLECCIÓN / VIDRIERA --- */
+        .collection {
+            padding: 80px 10%;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .collection h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .grid-galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .item-galeria {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .item-galeria img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .item-galeria:hover img {
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+
+        .item-galeria:hover .overlay {
+            transform: translateY(0);
+        }
+
+        .overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        /* --- FOOTER / CONTACTO --- */
+        footer {
+            background-color: var(--color-oscuro);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        footer h2 {
+            margin-bottom: 20px;
+        }
+
+        .contacto-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 40px;
+            background-color: var(--color-acento);
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .contacto-btn:hover {
+            background-color: #704720;
+        }
+
+        /* Diseño Responsivo para Móviles */
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            header {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">Sastrería [Apellido]</div>
+    </header>
+
+    <!-- Sección Principal (Hero) -->
+    <!-- REEMPLAZAR URL_DE_FOTO_DE_FONDO_AQUI con el link de una foto de tu padre trabajando o una textura de tela -->
+    <section class="hero" id="inicio">
+        <h1>Alta Costura Andina</h1>
+        <p>Diseños exclusivos confeccionados a medida, honrando la tradición de los hilados artesanales en llama y vicuña.</p>
+        <a href="#coleccion" class="btn-cta">Ver Colección</a>
+    </section>
+
+    <!-- Sección de Historia y Materiales -->
+    <section class="about" id="origen">
+        <div class="about-text">
+            <h2>El Arte del Telar y la Tijera</h2>
+            <p>Cada prenda es una obra única que comienza en los Valles Calchaquíes. Trabajamos exclusivamente con lanas de llama y vicuña, hiladas a mano por artesanos locales, preservando técnicas que han pasado de generación en generación.</p>
+            <p>En el taller, esas texturas ancestrales se encuentran con la precisión de la sastrería de alta costura. El resultado son prendas con identidad, diseño de autor y una caída impecable, pensadas para durar toda la vida.</p>
+        </div>
+        <div class="about-image">
+            <!-- REEMPLAZAR RUTA_IMAGEN_AQUI con la foto de un telar o el taller -->
+            <img src="https://images.unsplash.com/photo-1584226761916-3fd67ab5ac3a?q=80&w=800&auto=format&fit=crop" alt="Textura de lana y taller de sastrería">
+        </div>
+    </section>
+
+    <!-- Vidriera de Productos -->
+    <section class="collection" id="coleccion">
+        <h2>Piezas Destacadas</h2>
+        <div class="grid-galeria">
+            <!-- Producto 1 -->
+            <div class="item-galeria">
+                <img src="https://images.unsplash.com/photo-1594938298596-70f56fb3cecb?q=80&w=800&auto=format&fit=crop" alt="Abrigo de Vicuña">
+                <div class="overlay">
+                    <h3>Abrigo Puna en Vicuña</h3>
+                    <p>Corte clásico, forrería en seda natural.</p>
+                </div>
+            </div>
+            <!-- Producto 2 -->
+            <div class="item-galeria">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800&auto=format&fit=crop" alt="Saco de Llama">
+                <div class="overlay">
+                    <h3>Saco de Llama Cruzado</h3>
+                    <p>Hilado artesanal tonos tierra.</p>
+                </div>
+            </div>
+            <!-- Producto 3 -->
+            <div class="item-galeria">
+                <img src="https://images.unsplash.com/photo-1550614000-4b95d4edc5ab?q=80&w=800&auto=format&fit=crop" alt="Ruana Estilizada">
+                <div class="overlay">
+                    <h3>Capa / Ruana Estilizada</h3>
+                    <p>Diseño de autor con terminaciones a mano.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contacto -->
+    <footer>
+        <h2>Confección a Medida</h2>
+        <p>Atención personalizada y asesoramiento en diseño.</p>
+        <!-- REEMPLAZAR EL NUMERO DE WHATSAPP AQUI (Incluir código de país, ej: 549 para Argentina) -->
+        <a href="https://wa.me/549XXXXXXXXXX?text=Hola,%20me%20gustaría%20consultar%20por%20una%20prenda%20a%20medida." class="contacto-btn" target="_blank">Contactar por WhatsApp</a>
+    </footer>
+
+</body>
+</html>
